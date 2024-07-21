@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String</h2>
+
+<div>Original String:</div>
+<div>best</div>
+
+<div>Replaced String:</div>
+<div id="t"></div>
+
+<script>
+window.onload = function replaceFirstChar() {
+  let originalString = "best";
+  let newFirstChar = "t";
+
+  let resultString = newFirstChar + originalString.slice(1);
+  document.getElementById('t').textContent = resultString;
+}
+</script>
+
+</body>
+</html>

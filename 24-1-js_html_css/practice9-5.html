@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <img class="table_image" src="test1.jpg">
+        <img class="table_image" src="test2.jpg">
+        <img class="table_image" src="test3.jpg">
+        <img class="table_image" src="test4.jpg">
+        <button onclick="changeImages()">Change</button>
+
+        <script>
+            function changeImages() {
+                var images = document.getElementsByClassName("table_image");
+                for (var i = 2; i < images.length; i++) {
+                    images[i].src = "test5.jpg";
+                }
+            }
+        </script>
+    </body>
+</html>

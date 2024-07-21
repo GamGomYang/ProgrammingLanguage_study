@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>
+         task3
+        </title>
+    </head>
+    <body>
+        <h2>
+            simple calculator
+        </h2>
+
+        <form action="" method="POST">
+            first integer:<input type="text" id="first"/><br>
+            secont integer:<input type="text" id="second"/><br>
+            total:<input type="text" id="total"/><br>
+            <input type="button" value="calculate" onclick="calculateTotal()"/>
+        </form>
+
+        <script>
+            function calculateTotal() {
+            var first = parseInt(document.getElementById("first").value);
+            var second = parseInt(document.getElementById("second").value);
+            var total = first + second;
+            document.getElementById("total").value = total;
+            }
+        </script>
+</html>

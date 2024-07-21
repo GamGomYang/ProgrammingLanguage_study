@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title> JavaScript Function</title>
+</head>
+
+<body>
+    <h1 id="target"></h1>
+    <h1> JavaScript Function</h1>
+    <br>
+    <br>
+    
+
+    <script>
+        function square(num) {
+            return num * num;
+        }
+
+        function half(num) {
+            return num / 2;
+        }
+
+        function areaOfCircle(radius) {
+            return Math.PI * square(radius);
+        }
+
+        function percentageOf(num1, num2) {
+            return (num1 / num2) * 100;
+        }
+
+        document.write("The result of squaring the number 3 is " + square(3) + "<br>");
+        document.write("Half of 5 is " + half(5) + "<br>");
+        document.write("The result of squaring the number 2 is " + square(2) + "<br><br>");
+        document.write("Do crazy stuff<br>");
+        document.write("Half of 5 is " + half(5) + "<br>");
+        document.write("The result of squaring the number 6.25 is " + square(6.25) + "<br>");
+        document.write("The area of a circle with radius 6.25 is " + areaOfCircle(6.25) + "<br>");
+        document.write("6.25 is " + percentageOf(6.25, 122.718463038513) + "% of 122.718463038513<br>");
+          
+        console.log('This is the console log');
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<table id="table"style="border:1px solid black" ></table>
+
+<script>
+window.onload = displayTable;
+function displayTable() {
+  let table = document.getElementById('table');
+  table.innerHTML = '';
+
+  for (let i = 1; i <= 10; i++) {
+    let row = document.createElement('tr');
+    let cell1 = document.createElement('td');
+    let cell2 = document.createElement('td');
+    let cell3 = document.createElement('td');
+
+    cell1.textContent = '3';
+    cell2.textContent =  + i;
+    cell3.textContent =  + 3*i;
+
+    cell1.style.border = '1px solid black';
+    cell2.style.border = '1px solid black';
+    cell3.style.border = '1px solid black';
+
+
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+
+    table.appendChild(row);
+  }
+}
+</script>
+
+</body>
+</html>

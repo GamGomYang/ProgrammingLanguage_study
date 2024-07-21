@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <title>title</title>
+    <style>
+        .highlight {
+            background-color: skyblue;
+        }
+    </style>
+    <script>
+        function highlightRow(row) {
+            row.classList.add("highlight");
+        }
+
+        function unhighlightRow(row) {
+            row.classList.remove("highlight");
+        }
+    </script>
+</head>
+
+<body>
+    <table border="1">
+        <tr onmouseover="highlightRow(this)" onmouseout="unhighlightRow(this)">
+            <th></th>
+            <th>water</th>
+            <th>air</th>
+            <th>fire</th>
+            <th>earth</th>
+        </tr>
+        <tr onmouseover="highlightRow(this)" onmouseout="unhighlightRow(this)">
+            <td>Spring thunderclouds</td>
+            <td>no</td>
+            <td>yes</td>
+            <td>yes</td>
+            <td>yes</td>
+        </tr>
+        <tr onmouseover="highlightRow(this)" onmouseout="unhighlightRow(this)">
+            <td>Roasting chestunts
+            </td>
+            <td>yes</td>
+            <td>yes</td>
+            <td>no</td>
+            <td>yes</td>
+        </tr>
+        <tr onmouseover="highlightRow(this)" onmouseout="unhighlightRow(this)">
+            <td>winter snowbanks</td>
+            <td>yes</td>
+            <td>yes</td>
+            <td>yes</td>
+            <td>yes</td>
+        </tr>
+        
+        <tr onmouseover="highlightRow(this)" onmouseout="unhighlightRow(this)">
+            <td>Ice cream on a hot summer day</td>
+            <td>yes</td>
+            <td>yes</td>
+            <td>yes</td>
+            <td>yes</td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<html>
+    <head>
+     <style>
+        #blue{background-color: blue;}
+     </style>
+        
+    </head>
+
+<body>
+<h1>
+    the document object
+</h1>    
+<h2 id="blue">
+    the queryselectall() method
+</h2>
+
+
+<p>
+    add a background color all elements with class ="example"
+</p>
+
+<p1 class="example">heading</p1>
+
+<script>
+    const nodelist = document.querySelectorall(".example");
+    for(let i =0; i<nodelist;i++){
+        nodelist[i].style.backgroundColor = "red";
+    }
+</script>
+
+</body>
+</html> 

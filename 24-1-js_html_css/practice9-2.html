@@ -1,0 +1,31 @@
+<html>
+
+<head>
+
+    <title>
+title
+    </title>
+
+    <script>
+        function show(){
+            var output = document.getElementsByClassName("list_class")[2].innerHTML;
+            alert(output);
+        }
+
+    </script>
+</head>
+
+<body>
+    
+    <ul>
+
+        <script>
+            for(var i=1;i<6;i++){
+                document.write('<li class = "list_class">List item list</li>');
+
+            }
+        </script>
+        <input type="button" value="click" onclick="show();" />
+    </ul>
+</body>
+</html>

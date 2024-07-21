@@ -1,0 +1,27 @@
+<html>
+
+<head>
+
+    <title>
+        the document object
+    </title>
+
+</head>
+
+<body>
+    <h1>the document object</h1>
+
+    <h2>Dom innerHTML Property</h2>
+    <input type="button" value="Try it" onclick="printMessage()">
+    <p class="p1">javascript dom is fun to learn</p>
+
+    <script>
+        function printMessage() {
+            var p2 = document.querySelector('.p1');
+            p2.outerHTML += "<h2 style='color: green;'>" + p2.innerHTML + "</h2>";
+        }
+    </script>
+
+    
+</body>
+</html>

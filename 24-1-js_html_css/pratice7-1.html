@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input id="inputValue" type="text">
+
+
+<button onclick="addToStack()">Stack</button>
+<button onclick="show()">Show</button>
+
+<p id="stackValues"></p>
+
+<script>
+let stack = [];
+
+function addToStack() {
+  let value = document.getElementById('inputValue').value;
+  stack.push(value);
+  document.getElementById('inputValue').value = '';
+}
+
+function show() {
+  document.getElementById('stackValues').innerHTML = stack.join(', ');
+}
+</script>
+
+</body>
+</html>
