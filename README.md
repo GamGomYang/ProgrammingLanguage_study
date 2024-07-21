@@ -1,56 +1,27 @@
 # 프로그래밍 언어 공부 레포지토리
 
-이 레포지토리는 다양한 프로그래밍 언어를 공부하기 위한 자료와 코드를 관리하기 위해 만들어졌습니다. 각 프로그래밍 언어별로 브랜치를 나누어 공부하며, 관련 코드 및 자료를 해당 브랜치에 저장합니다.
-
-## 작성자
-
-- **작성자**: GamGomYang
-- **이메일**: ay6656@naver.com
+이 레포지토리는 다양한 프로그래밍 언어를 공부하기 위해 생성되었습니다. 각 프로그래밍 언어에 대한 자료와 코드는 해당 언어별 브랜치에 저장되어 있습니다.
 
 ## 브랜치 설명
 
-이 레포지토리는 다음과 같은 브랜치들을 포함하고 있습니다:
+이 레포지토리에는 다음과 같은 브랜치가 포함되어 있습니다:
 
-1. **`js_html_css`**: 
-   - 이 브랜치에는 JavaScript, HTML, CSS 관련 자료와 코드가 포함됩니다.
-   - **사용 방법**: 
-     - 브랜치로 전환: `git checkout js_html_css`
-     - 코드 추가 후 커밋 및 푸시: 
-       ```sh
-       git add .
-       git commit -m "Your commit message"
-       git push origin js_html_css
-       ```
+1. **`js_html_css`**:
+   - **설명**: JavaScript, HTML, CSS 관련 자료와 코드가 포함된 브랜치입니다.
+   - **내용**: 웹 개발에 관련된 예제 코드와 학습 자료.
 
 2. **`python`**:
-   - 이 브랜치에는 Python 관련 자료와 코드가 포함됩니다.
-   - **사용 방법**:
-     - 브랜치로 전환: `git checkout python`
-     - 코드 추가 후 커밋 및 푸시:
-       ```sh
-       git add .
-       git commit -m "Your commit message"
-       git push origin python
-       ```
+   - **설명**: Python 프로그래밍 언어에 대한 자료와 코드가 포함된 브랜치입니다.
+   - **내용**: Python의 다양한 예제 코드와 학습 자료.
 
 3. **`java`**:
-   - 이 브랜치에는 Java 관련 자료와 코드가 포함됩니다.
-   - **사용 방법**:
-     - 브랜치로 전환: `git checkout java`
-     - 코드 추가 후 커밋 및 푸시:
-       ```sh
-       git add .
-       git commit -m "Your commit message"
-       git push origin java
-       ```
+   - **설명**: Java 프로그래밍 언어에 대한 자료와 코드가 포함된 브랜치입니다.
+   - **내용**: Java 관련 예제 코드와 학습 자료.
 
 4. **`c/cpp`**:
-   - 이 브랜치에는 C/C++ 관련 자료와 코드가 포함됩니다.
-   - **사용 방법**:
-     - 브랜치로 전환: `git checkout c/cpp`
-     - 코드 추가 후 커밋 및 푸시:
-       ```sh
-       git add .
-       git commit -m "Your commit message"
-       git push origin c/cpp
-       ```
+   - **설명**: C 및 C++ 프로그래밍 언어에 대한 자료와 코드가 포함된 브랜치입니다.
+   - **내용**: C/C++의 다양한 예제 코드와 학습 자료.
+
+## 사용법
+
+레포지토리를 클론하여 각 브랜치에 접근한 후, 원하는 언어에 대한 자료를 확인할 수 있습니다.
