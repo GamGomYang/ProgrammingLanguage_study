@@ -27,5 +27,4 @@
 | 같은 숫자는 싫어 | 배열에서 연속적으로 나타나는 숫자는 하나만 남기고 전부 제거 | [같은 숫자는 싫어](https://programmers.co.kr/learn/courses/30/lessons/12906) |
 | 올바른 괄호 | 주어진 문자열이 올바른 괄호 문자열인지 확인 | [올바른 괄호](https://programmers.co.kr/learn/courses/30/lessons/12909) |
 | 탑 | 각 탑에서 발사한 신호가 어느 탑에서 수신되는지 구하기 | [탑](https://programmers.co.kr/learn/courses/30/lessons/42588) |
-| 프린터 | 인쇄 대기목록의 문서를 특정한 우선순위에 따라 인쇄 | [프린터](https://programmers.co.kr/learn/courses/30/lessons/42587) |
 | 쇠막대기 | 쇠막대기를 레이저로 자르는 과정에서 잘려진 쇠막대기 조각의 개수 구하기 | [쇠막대기](https://programmers.co.kr/learn/courses/30/lessons/42585) |
