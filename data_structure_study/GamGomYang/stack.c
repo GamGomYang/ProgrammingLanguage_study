@@ -26,12 +26,11 @@ int isFull(Stack *s) {
 
 void push(Stack *s, int value) {
     if (isFull(s)) {
-        printf("Stack is full!\n");
+        printf("\n");
         return;
     }
     s->data[++s->top] = value; 
 }
-
 
 int pop(Stack *s) {
     if (isEmpty(s)) {
@@ -49,7 +48,6 @@ int peek(Stack *s) {
     }
     return s->data[s->top];
 }
-
 
 void printStack(Stack *s) {
     if (isEmpty(s)) {
