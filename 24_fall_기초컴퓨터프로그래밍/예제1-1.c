@@ -82,7 +82,7 @@ int main(void) {
 
 		result = a * b;
 
-		printf("결과 : %d", result);
+		printf("결과 : %d\n", result);
 
 	}
 	else if (mode == 3) {
@@ -96,7 +96,7 @@ int main(void) {
 			result = a / b;
 			mod = a % b;
 
-			printf("결과 : 몫 %d 나머지 %d", result,mod);
+			printf("결과 : 몫 %d 나머지 %d\n", result,mod);
 		}
 		else  {
 			result = a / b;
