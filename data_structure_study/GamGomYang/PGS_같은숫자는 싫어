@@ -5,6 +5,7 @@ import java.util.Stack;
 import java.util.HashSet;
 import java.util.Deque;
 
+//java로 풀었음 c언어로 풀어야함
 /*
  * 수도 코드
  * 1: 해시 셋에 해당 숫자를 넣는다.
