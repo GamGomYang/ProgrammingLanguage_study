@@ -1,33 +1,39 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include<sys/errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <unistd.h>  
 
-extern int errno;
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        fprintf(stderr, "Usage: %s <mode> <filename>\n", argv[0]);
+        exit(1);
+    }
 
-int main(int argc, char[] *argv)
-DIR *dp;
+    struct stat statbuf;
+    if (stat(argv[2], &statbuf) == -1) {
+        perror("파일 정보 확인 오류");
+        exit(1);
+    }
+
+    printf("%s: 현재 권한: %o\n", argv[2], statbuf.st_mode & 0777);
 
 
-{
-int perm;
+    mode_t new_mode = strtol(argv[1], NULL, 8);
+    if (chmod(argv[2], new_mode) == -1) {
+        perror("권한 변경 오류");
+        exit(1);
+    }
 
-if(access(pd, F_OK)== -1 && errno == ENOENT){
-    printf("%s is not exit",dp);
+    if (access(argv[2], W_OK) == 0) {
+        printf("%s : Write permission is permitted.\n", argv[2]);
+    } else {
+        printf("%s : Write permission is not permitted.\n", argv[2]);
+    }
 
-}
+    if (stat(argv[2], &statbuf) == -1) {
+        perror("파일 정보 확인 오류");
+        exit(1);
+    }
 
-perm = access(dp,R_OK);
-
-if(perm == 0){
-
-    printf("%s: read permission is permmitted.\n",pd);
-
-    
-}
-else if(perm == -1 && errno ==EACESS){
-    printf("%s: Read permmissions is not permmitted\n",dp);
-    
-}
-
+    return 0;
 }

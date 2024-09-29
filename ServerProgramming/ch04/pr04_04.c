@@ -1,23 +1,20 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include<sys/stat.h>
-#include<sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
 
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+      printf("no instruction");
+        exit(1);
+    }
 
-int main(int argc, char[] *argv){
+    struct stat statbuf;
+    if (stat(argv[1], &statbuf) == -1) {
+        perror("error");
+        exit(1);
+    }
 
-struct stat statbuf;
-if(argv[1]==NULL){
+    printf("SIZE= %ld\n", statbuf.st_size);
 
-    printf("driectory %s is not exist", file_name);
-    
-}
-char file_name=argv[1]; 
-stat(file_name);
-
-printf("SIZE = %d\n", (int)statbuf.st_size);
-
-return 0;
-    
+    return 0;
 }

@@ -5,3 +5,257 @@
 
 2번
 예외처리해야함
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <errno.h>
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <directory_name>\n", argv[0]);
+        exit(1);
+    }
+
+    if (mkdir(argv[1], 0755) == -1) {
+        perror("디렉토리 생성 오류");
+        exit(1);
+    }
+
+    if (chdir(argv[1]) == -1) {
+        perror("디렉토리 변경 오류");
+        exit(1);
+    }
+
+    char cwd[1024];
+    if (getcwd(cwd, sizeof(cwd)) != NULL) {
+        printf("현재 작업 디렉토리: %s\n", cwd);
+    } else {
+        perror("현재 디렉토리 확인 오류");
+    }
+
+    return 0;
+}
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <dirent.h>
+#include <sys/stat.h>
+#include <string.h>
+#include <unistd.h>
+#include <errno.h>
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <directory_name>\n", argv[0]);
+        exit(1);
+    }
+
+    DIR *dir = opendir(argv[1]);
+    if (dir == NULL) {
+        perror("디렉토리 열기 오류");
+        exit(1);
+    }
+
+    struct dirent *entry;
+    int is_empty = 1;
+    while ((entry = readdir(dir)) != NULL) {
+        if (strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0) {
+            is_empty = 0;
+            break;
+        }
+    }
+    closedir(dir);
+
+    if (is_empty) {
+        if (rmdir(argv[1]) == -1) {
+            perror("디렉토리 삭제 오류");
+            exit(1);
+        } else {
+            printf("디렉토리가 비어있어 삭제되었습니다.\n");
+        }
+    } else {
+        printf("디렉토리가 비어있지 않습니다.\n");
+    }
+
+    return 0;
+}
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <dirent.h>
+#include <string.h>
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
+        exit(1);
+    }
+
+    DIR *dir = opendir(".");
+    if (dir == NULL) {
+        perror("디렉토리 열기 오류");
+        exit(1);
+    }
+
+    struct dirent *entry;
+    int found = 0;
+    while ((entry = readdir(dir)) != NULL) {
+        if (strcmp(entry->d_name, argv[1]) == 0) {
+            found = 1;
+            break;
+        }
+    }
+    closedir(dir);
+
+    if (found) {
+        printf("파일이 존재합니다.\n");
+    } else {
+        printf("파일이 존재하지 않습니다.\n");
+    }
+
+    return 0;
+}
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
+        exit(1);
+    }
+
+    struct stat statbuf;
+    if (stat(argv[1], &statbuf) == -1) {
+        perror("파일 정보 확인 오류");
+        exit(1);
+    }
+
+    printf("파일 크기: %ld bytes\n", statbuf.st_size);
+
+    return 0;
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <dirent.h>
+#include <sys/stat.h>
+
+int main() {
+    DIR *dir = opendir(".");
+    if (dir == NULL) {
+        perror("디렉토리 열기 오류");
+        exit(1);
+    }
+
+    struct dirent *entry;
+    while ((entry = readdir(dir)) != NULL) {
+        printf("이름: %s, inode: %ld\n", entry->d_name, entry->d_ino);
+    }
+    closedir(dir);
+
+    return 0;
+}
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        fprintf(stderr, "Usage: %s <filename> <mode>\n", argv[0]);
+        exit(1);
+    }
+
+    struct stat statbuf;
+    if (stat(argv[1], &statbuf) == -1) {
+        perror("파일 정보 확인 오류");
+        exit(1);
+    }
+
+    printf("현재 권한: %o\n", statbuf.st_mode & 0777);
+
+    mode_t new_mode = strtol(argv[2], NULL, 8);
+    if (chmod(argv[1], new_mode) == -1) {
+        perror("권한 변경 오류");
+        exit(1);
+    }
+
+    printf("새로운 권한으로 변경되었습니다.\n");
+
+    return 0;
+}
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
+        exit(1);
+    }
+
+    if (symlink(argv[1], "link.sym") == -1) {
+        perror("심볼릭 링크 생성 오류");
+        exit(1);
+    }
+
+    char buf[1024];
+    ssize_t len = readlink("link.sym", buf, sizeof(buf) - 1);
+    if (len == -1) {
+        perror("심볼릭 링크 읽기 오류");
+        exit(1);
+    }
+    buf[len] = '\0';
+    printf("심볼릭 링크 내용: %s\n", buf);
+
+    return 0;
+}
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/stat.h>
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
+        exit(1);
+    }
+
+    if (link(argv[1], "link.ln") == -1) {
+        perror("하드 링크 생성 오류");
+        exit(1);
+    }
+
+    struct stat statbuf;
+    if (stat(argv[1], &statbuf) == -1) {
+        perror("파일 정보 확인 오류");
+        exit(1);
+    }
+    printf("하드 링크 개수: %ld\n", statbuf.st_nlink);
+
+    if (unlink("link.ln") == -1) {
+        perror("하드 링크 삭제 오류");
+        exit(1);
+    }
+
+    if (stat(argv[1], &statbuf) == -1) {
+        perror("파일 정보 확인 오류");
+        exit(1);
+    }
+    printf("하드 링크 삭제 후 개수: %ld\n", statbuf.st_nlink);
+
+    return 0;
+}
+

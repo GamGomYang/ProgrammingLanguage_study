@@ -1,33 +1,32 @@
-#include<stdio.h>
-#include<unistd.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <errno.h>
 
-
-int main(){
-    char *cwd;
-    char wd1[BUFSIZ];
-    char wd2[10];
-
-
-
-    int mkdir(const char *pathname, mode_t mode);
-    int chdir(const char *path);
-    char *getcwd(buf[.size], size_t size);
-
-    cwd = getcwd(NULL,BUFSIZ);
-    
-    
-
-    if(*pathname == NULL){
-
-        perror("mkdir(): bad adress");
-
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "mkdir(): Bad address\n");
         exit(1);
-
     }
 
-   printf("cwd1 = %s\n", cwd);
-    free(cwd);
+    if (mkdir(argv[1], 0755) == -1) {
+        perror("mkdir()");
+        exit(1);
+    }
+
+    if (chdir(argv[1]) == -1) {
+        perror("chdir()");
+        exit(1);
+    }
 
 
+    char cwd[1024];
+    if (getcwd(cwd, sizeof(cwd)) != NULL) {
+        printf("cwd: %s\n", cwd);
+    } else {
+        perror("getcwd()");
+    }
+
+    return 0;
 }

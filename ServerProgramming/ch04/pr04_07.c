@@ -1,30 +1,36 @@
-#include<sys/stat.h>
-#include<sys/types.h>
-#include<unistd.h>
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <limits.h> 
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        printf("use instruction");
+        exit(1);
+    }
+
+    if (symlink(argv[1], "link.sym") == -1) {
+        perror("link error");
+        exit(1);
+    }
 
 
-int main(int argc , char* argv){
+    char buf[1024];
+    ssize_t len = readlink("link.sym", buf, sizeof(buf) - 1);
+    if (len == -1) {
+        perror("READLINK error");
+        exit(1);
+    }
+    buf[len] = '\0';
+    printf("link.sym: READLINK: %s\n", buf);
 
-    DIR *dp;
 
-    dp = argc[0];
-    
+    char real_path[PATH_MAX];
+    if (realpath(buf, real_path) == NULL) {
+        perror("REALPATH error");
+        exit(1);
+    }
+    printf("link sym: REALPATH %s\n", real_path);
 
-    struct stat statbuf;
-    
-
-    stat(dp, &statbuf);
-    printf("Before Link Count = %d\n", (int)statbuf.st_nlink);
-
-// link함수 어떻게 해야하는지?
-// int symlink(const char * target, const char *linkpath);
-
-    symlink()
-
-   stat(dp, &statbuf);
-   printf("link count = %d\n",(int)statbuf.st_nlink);
-
-   return 0;
+    return 0;
 }
