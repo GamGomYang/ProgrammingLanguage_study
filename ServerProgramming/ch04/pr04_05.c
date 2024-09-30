@@ -6,14 +6,23 @@
 int main() {
     DIR *dir = opendir(".");
     if (dir == NULL) {
-        perror("디렉토리 열기 오류");
+        perror("open error");
         exit(1);
     }
 
     struct dirent *entry;
+    struct stat file_stat;
+
     while ((entry = readdir(dir)) != NULL) {
-        printf("name: %s, inode: %ld\n", entry->d_name, entry->d_ino);
+        if (stat(entry->d_name, &file_stat) == -1) {
+            perror("stat error");
+            continue;
+        }
+
+
+        printf("name: %s, inode: %ld\n", entry->d_name, file_stat.st_ino);
     }
+
     closedir(dir);
 
     return 0;

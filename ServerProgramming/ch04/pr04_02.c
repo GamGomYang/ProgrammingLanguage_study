@@ -7,8 +7,9 @@
 #include <errno.h>
 
 int main(int argc, char *argv[]) {
+
     if (argc != 2) {
-        fprintf(stderr, "Usage: %s <directory_name>\n", argv[0]);
+      printf("no instruction\n");
         exit(1);
     }
 
@@ -36,7 +37,8 @@ int main(int argc, char *argv[]) {
             printf("The directory '%s' is empty.\n", argv[1]);
             printf("The directory '%s' has been deleted.\n", argv[1]);
         }
-    } else {
+    }
+     else {
         printf("The directory '%s' is not empty.\n", argv[1]);
     }
 

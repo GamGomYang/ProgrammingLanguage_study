@@ -5,22 +5,21 @@
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
-        fprintf(stderr, "Usage: %s <mode> <filename>\n", argv[0]);
+        printf("no argument\n");
         exit(1);
     }
 
     struct stat statbuf;
     if (stat(argv[2], &statbuf) == -1) {
-        perror("파일 정보 확인 오류");
+        perror("file error 파일오류!");
         exit(1);
     }
 
-    printf("%s: 현재 권한: %o\n", argv[2], statbuf.st_mode & 0777);
 
 
     mode_t new_mode = strtol(argv[1], NULL, 8);
     if (chmod(argv[2], new_mode) == -1) {
-        perror("권한 변경 오류");
+        perror("permitted error 권한 오류!");
         exit(1);
     }
 
@@ -31,7 +30,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (stat(argv[2], &statbuf) == -1) {
-        perror("파일 정보 확인 오류");
+        perror("file specification error");
         exit(1);
     }
 

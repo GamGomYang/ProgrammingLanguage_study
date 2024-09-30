@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        printf("use instruction");
+        printf("no instruction\n");
         exit(1);
     }
 
@@ -16,6 +16,7 @@ int main(int argc, char *argv[]) {
 
 
     char buf[1024];
+
     ssize_t len = readlink("link.sym", buf, sizeof(buf) - 1);
     if (len == -1) {
         perror("READLINK error");
@@ -26,11 +27,12 @@ int main(int argc, char *argv[]) {
 
 
     char real_path[PATH_MAX];
+    
     if (realpath(buf, real_path) == NULL) {
         perror("REALPATH error");
         exit(1);
     }
-    printf("link sym: REALPATH %s\n", real_path);
+     printf("link sym: REALPATH %s\n", real_path);
 
     return 0;
 }

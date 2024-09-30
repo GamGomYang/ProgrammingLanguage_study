@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-      printf("no instruction");
+      printf("no instruction\n");
         exit(1);
     }
 
@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    printf("SIZE= %ld\n", statbuf.st_size);
+    printf("SIZE = %ld\n", statbuf.st_size);
 
     return 0;
 }
